@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+##############################################################################
+##
+##  Gradle wrapper script
+##
+##############################################################################
+
+# Determine the Java command to use to launch the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD="$JAVA_HOME/jre/sh/java"
+    else
+        JAVACMD="$JAVA_HOME/bin/java"
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME environment variable to the root directory of your Java installation."
+    fi
+else
+    JAVACMD="java"
+    which java >/dev/null || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME environment variable to the root directory of your Java installation or add 'java' to your PATH."
+fi
+
+# Determine the directory of the script
+APP_HOME=$(dirname "$0")
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS.
+DEFAULT_JVM_OPTS=""
+
+APP_NAME="Gradle"
+APP_BASE_NAME=$(basename "$0")
+
+# Use the maximum available file descriptors.
+[ -z "$MAX_FD" ] && MAX_FD="maximum"
+unset -v MAX_FD_LIMIT
+case "$MAX_FD" in
+maximum)
+    MAX_FD_LIMIT=$(ulimit -n)
+    ;;
+esac
+if [ -n "$MAX_FD_LIMIT" ] ; then
+    if [ "$MAX_FD_LIMIT" -ne "$MAX_FD" ] ; then
+        ulimit -n "$MAX_FD_LIMIT" || die "ERROR: Could not set maximum file descriptor limit"
+    fi
+fi
+
+# For Darwin, add the path to the Java Home so that the correct library is found
+if [ "$(uname -s)" = "Darwin" ] ; then
+    if [ -n "$JAVA_HOME" ] ; then
+        DEFAULT_JVM_OPTS="-Djava.home=$JAVA_HOME $DEFAULT_JVM_OPTS"
+    fi
+fi
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+darwin=false
+mingw=false
+case "`uname`" in
+  CYGWIN*)
+    cygwin=true
+    ;;
+  Darwin*)
+    darwin=true
+    ;;
+  MINGW*)
+    mingw=true
+    ;;
+esac
+
+# For Cygwin/MSYS/MinGW, convert Windows style paths to Unix style paths.
+if $cygwin || $mingw ; then
+    [ -n "$JAVA_HOME" ] && JAVA_HOME="$(cygpath -am "$JAVA_HOME")"
+    [ -n "$CLASSPATH" ] && CLASSPATH="$(cygpath -pm "$CLASSPATH")"
+fi
+
+# Execute Gradle with the wrapper JAR.
+exec "$JAVACMD" $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS \
+  -Dorg.gradle.appname="$APP_NAME" \
+  -classpath "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" \
+  org.gradle.wrapper.GradleWrapperMain \
+  "$@"
