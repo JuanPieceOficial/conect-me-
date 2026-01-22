@@ -36,17 +36,18 @@ APP_NAME="Gradle"
 APP_BASE_NAME=$(basename "$0")
 
 # Use the maximum available file descriptors.
-[ -z "$MAX_FD" ] && MAX_FD="maximum"
+[ -z "$MAX_FD" ] && MAX_FD="unlimited"
 unset -v MAX_FD_LIMIT
 case "$MAX_FD" in
-maximum)
+unlimited)
     MAX_FD_LIMIT=$(ulimit -n)
+    ;;
+*)
+    MAX_FD_LIMIT="$MAX_FD"
     ;;
 esac
 if [ -n "$MAX_FD_LIMIT" ] ; then
-    if [ "$MAX_FD_LIMIT" -ne "$MAX_FD" ] ; then
-        ulimit -n "$MAX_FD_LIMIT" || die "ERROR: Could not set maximum file descriptor limit"
-    fi
+    ulimit -n "$MAX_FD_LIMIT" || die "ERROR: Could not set maximum file descriptor limit"
 fi
 
 # For Darwin, add the path to the Java Home so that the correct library is found
