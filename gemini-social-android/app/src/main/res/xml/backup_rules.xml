@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude specific files and directories -->
+    <!-- <exclude domain="database" path="[DATABASE_NAME]"/> -->
+    <!-- <exclude domain="sharedpref" path="[SHARED_PREF_NAME].xml"/> -->
+</full-backup-content>
