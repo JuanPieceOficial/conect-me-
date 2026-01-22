@@ -20,6 +20,17 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Download Gradle Wrapper JAR (if missing)
+      run: |
+        GRADLE_WRAPPER_JAR="gemini-social-android/gradle/wrapper/gradle-wrapper.jar"
+        if [ ! -f "$GRADLE_WRAPPER_JAR" ]; then
+          GRADLE_DISTRIBUTION_URL=$(grep 'distributionUrl' gemini-social-android/gradle/wrapper/gradle-wrapper.properties | cut -d'=' -f2 | sed 's/\\//g')
+          echo "Downloading Gradle wrapper from $GRADLE_DISTRIBUTION_URL"
+          wget -q -O "$GRADLE_WRAPPER_JAR" "$GRADLE_DISTRIBUTION_URL" || curl -sL "$GRADLE_DISTRIBUTION_URL" -o "$GRADLE_WRAPPER_JAR"
+        else
+          echo "Gradle wrapper JAR already exists."
+        fi
+
     - name: Grant execute permission for gradlew
       run: chmod +x gemini-social-android/gradlew
 
