@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -22,15 +20,12 @@ jobs:
           cache: gradle
       - name: Debug: List ConnectMe Android directory
         run: ls -l connectme-android/
-
       - name: Grant execute permission for gradlew
         run: chmod +x connectme-android/gradlew
-
       - name: Build debug APK
         run: |
           cd connectme-android
           ./gradlew assembleDebug
-
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
