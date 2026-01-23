@@ -21,6 +21,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      - name: Debug: List ConnectMe Android directory
+        run: ls -l connectme-android/
+
       - name: Grant execute permission for gradlew
         run: chmod +x connectme-android/gradlew
 
