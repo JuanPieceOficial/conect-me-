@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.gemini.social"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.gemini.social"
