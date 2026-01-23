@@ -35,7 +35,9 @@ jobs:
       run: chmod +x gemini-social-android/gradlew
 
     - name: Build debug APK
-      run: ./gemini-social-android/gradlew assembleDebug
+      run: |
+        cd gemini-social-android
+        ./gradlew assembleDebug
 
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
