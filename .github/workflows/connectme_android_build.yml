@@ -26,8 +26,14 @@ jobs:
     - name: Download Gradle Wrapper JAR (if missing)
       run: |
         GRADLE_WRAPPER_JAR="connectme-android/gradle/wrapper/gradle-wrapper.jar"
+        echo "Checking for gradle-wrapper.properties at: connectme-android/gradle/wrapper/gradle-wrapper.properties"
+        ls -l connectme-android/gradle/wrapper/gradle-wrapper.properties || echo "gradle-wrapper.properties not found by ls!"
         if [ ! -f "$GRADLE_WRAPPER_JAR" ]; then
-          GRADLE_DISTRIBUTION_URL=$(grep 'distributionUrl' connectme-android/gradle/wrapper/gradle-wrapper.properties | cut -d'=' -f2 | sed 's/\\//g')
+          GRADLE_DISTRIBUTION_URL=$(cat connectme-android/gradle/wrapper/gradle-wrapper.properties | grep 'distributionUrl' | cut -d'=' -f2 | sed 's/\\//g')
+          if [ -z "$GRADLE_DISTRIBUTION_URL" ]; then
+            echo "Error: GRADLE_DISTRIBUTION_URL is empty. Could not extract from gradle-wrapper.properties."
+            exit 1
+          fi
           echo "Downloading Gradle wrapper from $GRADLE_DISTRIBUTION_URL"
           wget -q "$GRADLE_DISTRIBUTION_URL" -O "$GRADLE_WRAPPER_JAR" || curl -sL "$GRADLE_DISTRIBUTION_URL" -o "$GRADLE_WRAPPER_JAR"
         else
