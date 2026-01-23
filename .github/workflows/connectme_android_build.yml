@@ -1,5 +1,8 @@
 name: ConnectMe Android CI
 
+# This workflow builds the ConnectMe Android application.
+
+
 on:
   push:
     branches: [ "main" ]
