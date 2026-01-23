@@ -1,6 +1,7 @@
 package com.conectme.app.data.repository
 
 import com.conectme.app.data.Comment
+import com.conectme.app.data.Comment
 import com.conectme.app.data.Post
 import com.conectme.app.data.User
 
@@ -97,7 +98,7 @@ object FakeDataRepository {
         "post-3" to listOf(
             Comment(
                 id = "c3-1",
-                user = currentUser,
+                user = getCurrentUser(),
                 text = "That looks so delicious! Recipe please? 🙏",
                 timestamp = "30m ago",
             )
