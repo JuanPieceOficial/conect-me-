@@ -14,6 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Debug: List Gradle Wrapper directory
         run: |
           echo "Listing contents of connectme-android/gradle/wrapper/"
@@ -56,3 +57,4 @@ jobs:
         with:
           name: app-debug-apk
           path: connectme-android/app/build/outputs/apk/debug/app-debug.apk
+# Adding a comment to force a GitHub Actions re-trigger.
