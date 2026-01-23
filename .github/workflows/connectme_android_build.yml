@@ -2,7 +2,6 @@ name: ConnectMe Android CI
 
 # This workflow builds the ConnectMe Android application.
 
-
 on:
   push:
     branches: [ "main" ]
@@ -15,6 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Debug: List Gradle Wrapper directory
         run: |
           echo "Listing contents of connectme-android/gradle/wrapper/"
