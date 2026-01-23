@@ -4,7 +4,6 @@ import com.conectme.app.data.Comment
 import com.conectme.app.data.Post
 import com.conectme.app.data.User
 
-// This is a dummy change to force recompilation.
 object FakeDataRepository {
     val users = listOf(
         User(

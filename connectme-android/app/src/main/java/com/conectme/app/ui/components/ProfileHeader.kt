@@ -1,7 +1,5 @@
 package com.conectme.app.ui.components
 
-// This is a dummy change to force recompilation.
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
