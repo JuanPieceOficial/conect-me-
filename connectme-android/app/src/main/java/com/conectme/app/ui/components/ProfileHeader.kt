@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.conectme.app.data.User
 import com.conectme.app.data.repository.FakeDataRepository
+import com.conectme.app.data.repository.FakeDataRepository.currentUser
 
 @Composable
 fun ProfileHeader(user: User) {
