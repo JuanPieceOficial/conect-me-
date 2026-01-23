@@ -1,7 +1,6 @@
 package com.conectme.app.data.repository
 
 import com.conectme.app.data.Comment
-import com.conectme.app.data.Comment
 import com.conectme.app.data.Post
 import com.conectme.app.data.User
 
@@ -99,7 +98,7 @@ object FakeDataRepository {
         "post-3" to listOf(
             Comment(
                 id = "c3-1",
-                user = getCurrentUser(),
+                user = getCurrentUser(), // Changed here
                 text = "That looks so delicious! Recipe please? 🙏",
                 timestamp = "30m ago",
             )
@@ -111,7 +110,7 @@ object FakeDataRepository {
         Post(
             id = "post-1",
             user = users[0],
-            text = "Found this hidden gem during my hike today. The views were simply stunning. #nature #adventure",
+            text = "Found this hidden gem during my hike today. The views were simply stunning. #nature #adventure", // text not caption
             image = "https://source.unsplash.com/random/800x600?nature,hike",
             timestamp = "4h ago",
             likes = 128,
@@ -120,7 +119,7 @@ object FakeDataRepository {
         Post(
             id = "post-2",
             user = users[3],
-            text = "There is nothing quite like a sunset on the beach. Feeling grateful for these simple moments.",
+            text = "There is nothing quite like a sunset on the beach. Feeling grateful for these simple moments.", // text not caption
             image = "https://source.unsplash.com/random/800x600?beach,sunset",
             timestamp = "1d ago",
             likes = 256,
@@ -129,7 +128,7 @@ object FakeDataRepository {
         Post(
             id = "post-3",
             user = users[1],
-            text = "Perfecting my carbonara recipe tonight! The secret is in the guanciale. 🍝 #foodie #italianfood",
+            text = "Perfecting my carbonara recipe tonight! The secret is in the guanciale. 🍝 #foodie #italianfood", // text not caption
             image = "https://source.unsplash.com/random/800x600?food,pasta",
             timestamp = "2d ago",
             likes = 512,
@@ -138,7 +137,7 @@ object FakeDataRepository {
         Post(
             id = "post-4",
             user = users[2],
-            text = "Just deployed a new feature for my side project! It's a great feeling to see your code come to life. What is everyone working on?",
+            text = "Just deployed a new feature for my side project! It's a great feeling to see your code come to life. What is everyone working on?", // text not caption
             image = null,
             timestamp = "3d ago",
             likes = 98,
