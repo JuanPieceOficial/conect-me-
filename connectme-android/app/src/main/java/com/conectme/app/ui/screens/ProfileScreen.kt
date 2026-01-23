@@ -10,20 +10,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.conectme.app.data.repository.FakeDataRepository
 import com.conectme.app.ui.components.PostCard
+import com.conectme.app.ui.components.ProfileHeader
 
 @Composable
 fun ProfileScreen(username: String) {
     val user = FakeDataRepository.getUser(username)
-    val posts = FakeDataRepository.getPostsByUser(user?.id ?: "")
 
     if (user != null) {
-        Column {
-            Text(text = user.name, modifier = Modifier.padding(16.dp))
-            Text(text = user.bio ?: "", modifier = Modifier.padding(horizontal = 16.dp))
-            LazyColumn {
-                items(posts) { post ->
-                    PostCard(post = post)
-                }
+        val userPosts = FakeDataRepository.getPostsByUser(user.id)
+        LazyColumn {
+            item {
+                ProfileHeader(user = user)
+            }
+            item {
+                Text(
+                    text = "Posts",
+                    style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+            items(userPosts) { post ->
+                PostCard(post = post)
             }
         }
     } else {
