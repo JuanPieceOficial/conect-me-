@@ -22,7 +22,7 @@ import com.conectme.app.data.repository.FakeDataRepository
 
 @Composable
 fun ProfileHeader(user: User) {
-    val isCurrentUser = user.id == FakeDataRepository.currentUser.id
+    val isCurrentUser = user.id == FakeDataRepository.getCurrentUser().id
 
     Column {
         Box(
