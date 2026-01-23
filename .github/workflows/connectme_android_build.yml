@@ -15,7 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
     - name: Debug: List Gradle Wrapper directory
       run: |
         echo "Listing contents of connectme-android/gradle/wrapper/"
